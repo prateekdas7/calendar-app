@@ -1,0 +1,33 @@
+create calendar --name "Work" --timezone America/New_York
+create calendar --name "Personal" --timezone America/Los_Angeles
+use calendar --name Work
+create event "Team Meeting" from 2025-01-15T10:00 to 2025-01-15T11:00
+create event "Lunch Break" on 2025-01-15
+create event "Daily Standup" from 2025-01-13T09:00 to 2025-01-13T09:30 repeats MWF for 5 times
+print events on 2025-01-15
+edit event subject "Team Meeting" from 2025-01-15T10:00 with "Important Team Meeting"
+print events on 2025-01-15
+use calendar --name Personal
+create event "Gym Session" from 2025-01-15T06:00 to 2025-01-15T07:00
+create event "Dinner" from 2025-01-15T19:30 to 2025-01-15T20:30
+print events on 2025-01-15
+copy event "Gym Session" on 2025-01-15T06:00 --target Work to 2025-01-16T09:00
+use calendar --name Work
+print events on 2025-01-16
+use calendar --name Personal
+copy events on 2025-01-16 --target Work to 2025-03-20
+use calendar --name Work
+print events on 2025-03-20
+use calendar --name Personal
+copy events between 2025-01-15 and 2025-01-16 --target Work to 2025-04-01
+use calendar --name Work
+print events from 2025-04-01T00:00 to 2025-04-05T23:59
+edit calendar --name Work --property timezone Europe/London
+edit calendar --name Personal --property name "Personal Calendar"
+use calendar --name "Personal Calendar"
+export cal my_calendar.ics
+export cal my_calendar.csv
+show status on 2025-01-15T10:30
+use calendar --name Work
+show status on 2025-01-16T10:30
+exit

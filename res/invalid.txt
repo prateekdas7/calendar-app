@@ -1,0 +1,14 @@
+create calendar --name Work --timezone InvalidTimezone
+create calendar --name Work --timezone America/New_York
+create calendar --name Work --timezone America/Chicago
+use calendar --name NonExistentCalendar
+create event "Meeting" from 2025-01-15T10:00 to 2025-01-15T11:00
+edit calendar --name NonExistent --property timezone Europe/Paris
+copy event "NonExistent" on 2025-01-15T10:00 --target Work to 2025-01-16T10:00
+copy events on 2025-01-99 --target Work to 2025-01-20
+unknown command here
+this is not a valid command
+create event from 2025-01-15T10:00 to 2025-01-15T11:00
+edit calendar --name Work --property invalidProperty someValue
+create event "Conflicting Meeting" from 2025-01-15T10:30 to 2025-01-15T11:30
+exit
